@@ -1,0 +1,51 @@
+.w-100P {
+        width: 100%;
+}
+
+.minw-100px {
+        min-width: 100px;
+}
+
+.ta-rigth {
+        text-align: right;
+}
+
+.ta-left {
+        text-align: left;
+}
+
+.ta-center {
+        text-align: center;
+}
+
+.d-none {
+        display: none;
+}
+
+.v-hidden {
+        visibility: hidden;
+}
+
+.c-pointer {
+        cursor: pointer;
+}
+
+.fs-14px {
+        font-size: 14px;
+}
+
+.fs-16px {
+        font-size: 16px;
+}
+
+.fs-18px {
+        font-size: 18px;
+}
+
+.ml-5px {
+        margin-left: 5px;
+}
+
+.pad-20px {
+        padding: 20px;
+}

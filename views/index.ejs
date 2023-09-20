@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include(info_pagina.subir_a_raiz + 'header.ejs') %>
+</head>
+
+<body>
+
+  <style>
+    .contenedor-head {
+      padding: 20px;
+
+      .logo {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+  <div class="App">
+  </div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+                        render() {
+                                return (
+                                        <ThemeProvider theme={darkTheme}>
+                                                <CssBaseline />
+                                                <div className="contenedor-head">
+                                                        <div>
+                                                        </div>
+                                                        <img src="https://i.imgur.com/4M34hi2.png" alt="logo" className="logo" />
+                                                </div>
+                                        </ThemeProvider>
+                                );
+                        }
+                }
+                ReactDOM.render(<App />, document.querySelector('.App'));
+        </script>
+</body>
+
+</html>
