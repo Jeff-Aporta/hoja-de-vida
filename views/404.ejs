@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        
+        <%- include(info_pagina.subir_a_raiz + 'header.ejs') %>
 </head>
 <body>
-        <div class="App">
+
+        <style>
+                .contenedor{
+                        min-height: 100vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: linear-gradient(90deg, hsl(195, 100%, 20%) 0%, rgba(0, 0, 0, 0) 50%, hsl(210, 100%, 25%) 100%);
+                }
+        </style>
+
+        <div class="App contenedor">
         </div>
 
         <script type="text/babel">
                 class App extends React.Component {
                         render() {
                                 return (
-                                        <div>
-                                                <h1>React App</h1>
-                                        </div>
+                                        <ThemeProvider theme={darkTheme}>
+                                                <CssBaseline />
+                                                <h1>404 :(</h1>
+                                        </ThemeProvider>
                                 );
                         }
                 }
                 ReactDOM.render(<App />, document.querySelector('.App'));
+
+                setTimeout(() => {
+                       location.href = '/'; 
+                }, 3000);
         </script>
 </body>
 </html>

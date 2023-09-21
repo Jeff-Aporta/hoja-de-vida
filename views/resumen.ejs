@@ -6,33 +6,30 @@
 </head>
 
 <body>
-        <div class="App">
-        </div>
 
-        <script type="text/babel">
-                class App extends React.Component {
+  <style>
+    .logo-acordion {
+      width: 150px;
+      height: 150px;
+      margin: 0 10px;
+      object-fit: contain;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+
+  <div class="App">
+  </div>
+
+  <script type="text/babel">
+    class App extends React.Component {
                         render() {
                                         return (
                                                 <ThemeProvider theme={darkTheme}>
                                                         <CssBaseline />
-                                                        <div className="menu">
-                                                                <span className="marca">
-                                                                        JeffAporta.
-                                                                </span>
-                                                        </div>
-                                                        <div className="contenedor-con-padding">
-                                                                <h1 className="ta-center c-dodgerblue" id="resumen">
-                                                                        RESUMEN.
-                                                                </h1>
-                                                                <h3 className="ta-center">
-                                                                        Enfasis:
-                                                                        Computación Gráfica 2D y estructura de datos
-                                                                </h3>
-                                                                <h2>
-                                                                        Empresas en las que he trabajado
-                                                                </h2>
-                                                                <AcordeonesDeEmpresas />
-                                                        </div>
+                                                        <HeaderMenu />
+                                                        <Titulo />
+                                                        <EmpresasEnLasQueHeTrabajado />
                                                         <div className="contenedor-con-padding bg-enfasis1">
                                                                 <h1 className="ta-center">
                                                                         Habilidades
@@ -41,32 +38,101 @@
                                                                 interfaces y juegos, además de habilidades en manipulación de imágenes y teoría del color. Especializado 
                                                                 en gráficos 2D, con conocimientos sólidos en geometría, simulaciones y transformaciones. Amplio dominio 
                                                                 de Excel y fórmulas avanzadas. Trayectoria versátil y adaptable en el ámbito laboral.
+                                                                <br/>
+                                                                <br/>
+                                                                <BloqueColeccionDeLogos />
                                                         </div>
-                                                        <div className="contenedor-con-padding ">
-                                                                        YouTube: &nbsp;
-                                                                        <a href="" className="t-d-none">
-                                                                                <i className="fa-brands fa-youtube c-red"></i> Jeff Aporta.
-                                                                        </a>
+                                                        <SeccionDesarrollador
+                                                                titulo={`
+                                                                        Ingeniero de Desarrollo de Software
+                                                                `}
+                                                                subtitulo={`
+                                                                        Con Trayectoria Profesional
+                                                                `}
+                                                                contenido={<React.Fragment>
+                                                                        Mi experiencia en el <b>desarrollo de software</b> se remonta a mis inicios a la temprana edad de 14 años. 
+                                                                        Inicié mi trayectoria programando en Microsoft Excel utilizando <b>Visual Basic for Applications (VBA)</b> como
+                                                                        primer lenguaje de programación. Posteriormente, adentrándome en el mundo del desarrollo de software, 
+                                                                        incursioné en <b>Java</b>, donde diseñé juegos de naturaleza básica.
                                                                         <br/>
-                                                                        Whatsapp: &nbsp;
-                                                                        <a href="https://api.whatsapp.com/send?phone=573107257814&text=Hola%20Jeff" className="t-d-none">
-                                                                                <i className="fa-brands fa-whatsapp c-lime"></i> +57 310 725 7814.
-                                                                        </a>
                                                                         <br/>
-                                                                        Telegram: &nbsp;
-                                                                        <a href="https://t.me/jeffAporta" className="t-d-none">
-                                                                                <i className="fa-brands fa-telegram c-dodgerblue"></i> @jeffAporta.
-                                                                        </a>
-                                                                        <br/>
-                                                                        Correo: &nbsp;
-                                                                        <a href="mailto:jeffaporta@gmail.com" className="t-d-none">
-                                                                                <i className="fa-regular fa-envelope"></i> jeffaporta@gmail.com
-                                                                        </a>
+                                                                        A lo largo de mi carrera, he adquirido destrezas y competencias en diversos lenguajes de programación, lo que me ha 
+                                                                        llevado a consolidar mi posición como desarrollador <b>fullstack</b> especializado en <b>Node.js</b> en la actualidad. Esta evolución 
+                                                                        en mi carrera me ha permitido abordar proyectos complejos de manera integral, desde el desarrollo del <b>backend</b> hasta 
+                                                                        la creación de interfaces de usuario sofisticadas, proporcionando soluciones técnicas avanzadas para satisfacer las 
+                                                                        necesidades de mis clientes y empleadores.
+                                                                </React.Fragment>}
+                                                        />
+                                                        <SeccionDesarrollador
+                                                                enfasis
+                                                                titulo={`
+                                                                        JavaScript.
+                                                                `}
+                                                                subtitulo={`
+                                                                        Una Pasión Desde 2016.
+                                                                `}
+                                                                contenido={<React.Fragment>
+                                                                        Desde 2016, mi relación con JavaScript ha sido un viaje apasionante y enriquecedor. Este lenguaje de programación no solo 
+                                                                        me ha cautivado, sino que también ha mantenido viva mi pasión a lo largo de mi carrera de una manera excepcional. A medida 
+                                                                        que profundizo en mi práctica y exploración de JavaScript, he llegado a apreciar aún más su increíble versatilidad y poder. 
+                                                                        En mi trayectoria profesional, he hecho la elección consciente de utilizar JavaScript en su forma más pura, en lugar de depender 
+                                                                        en exceso de marcos de trabajo como React u otros. Esta elección se basa en mi profundo respeto por la esencia y la elegancia 
+                                                                        de JavaScript como lenguaje de programación. La forma en que puede operar de manera fluida en múltiples plataformas es, 
+                                                                        sin duda, impresionante, lo que lo convierte en una herramienta absolutamente esencial para cualquier desarrollador.
+                                                                </React.Fragment>}
+                                                        />
+                                                        <div className="contenedor-con-padding bg-black">
+                                                                <InformacionDeContacto />
                                                         </div>
                                                 </ThemeProvider>
                                         )
                         }
                 }
+                function SeccionDesarrollador({enfasis, titulo, subtitulo, contenido}){
+                        return (
+                                <div className={`
+                                                ${enfasis?"bg-enfasis1":""}
+                                                contenedor-con-padding
+                                        `}>
+                                        <h1 className="c-dodgerblue">
+                                                {titulo}
+                                        </h1>
+                                        <h3 className="c-skyblue">
+                                                {subtitulo}
+                                        </h3>
+                                        <br/>
+                                        <Typography>
+                                                {contenido}
+                                        </Typography>
+                                </div>
+                        )
+                }
+
+                function EmpresasEnLasQueHeTrabajado(){
+                        return (
+                                <div className="contenedor-con-padding">
+                                        <h2>
+                                                Empresas en las que he trabajado
+                                        </h2>
+                                        <AcordeonesDeEmpresas />
+                                </div>
+                        )
+                }
+
+                function Titulo(){
+                        return (
+                                <React.Fragment>
+                                        <h1 className="ta-center c-dodgerblue" id="resumen">
+                                                RESUMEN.
+                                        </h1>
+                                        <h3 className="ta-center">
+                                                Enfasis:
+                                                Computación Gráfica 2D y estructura de datos.
+                                        </h3>
+                                </React.Fragment>
+                        )
+                }
+
 
                 function AcordeonesDeEmpresas(){
                         return (
@@ -114,7 +180,7 @@
                         return (
                                 <Accordion>
                                         <AccordionSummary expandIcon={<i class='fa-solid fa-chevron-down'></i>} >
-                                        <Typography><Chip label={`${años} ${años==1?"Año":"Años"}`} /> &nbsp; {nombre}</Typography>
+                                        <Typography><Chip label={`${años} ${años==1?"Año":"Años"}`} /> &nbsp; <b className="c-skyblue">{nombre}</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                                 <div className="d-flex">
