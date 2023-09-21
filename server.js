@@ -1,5 +1,7 @@
 "use strict";
 
+console.log("prototipos", require("./prototypes"));
+
 //configuracion del servidor
 const http = require("http");
 const express = require("express");
