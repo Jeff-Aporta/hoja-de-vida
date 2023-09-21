@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include(info_pagina.subir_a_raiz + 'header.ejs') %>
+</head>
+
+<body>
+        <div class="App">
+        </div>
+
+        <script type="text/babel">
+                class App extends React.Component {
+                        render() {
+                                        return (
+                                                <ThemeProvider theme={darkTheme}>
+                                                        <CssBaseline />
+                                                        <div className="menu">
+                                                                <span className="marca">
+                                                                        JeffAporta.
+                                                                </span>
+                                                        </div>
+                                                        <div className="contenedor-con-padding">
+                                                                <h1 className="ta-center c-dodgerblue" id="resumen">
+                                                                        RESUMEN.
+                                                                </h1>
+                                                                <h3 className="ta-center">
+                                                                        Enfasis:
+                                                                        Computación Gráfica 2D y estructura de datos
+                                                                </h3>
+                                                                <h2>
+                                                                        Empresas en las que he trabajado
+                                                                </h2>
+                                                                <AcordeonesDeEmpresas />
+                                                        </div>
+                                                        <div className="contenedor-con-padding bg-enfasis1">
+                                                                <h1 className="ta-center">
+                                                                        Habilidades
+                                                                </h1>
+                                                                Experiencia diversa en tecnologías clave: Python, Java y Node.js. Destacado por desarrollar servidores, 
+                                                                interfaces y juegos, además de habilidades en manipulación de imágenes y teoría del color. Especializado 
+                                                                en gráficos 2D, con conocimientos sólidos en geometría, simulaciones y transformaciones. Amplio dominio 
+                                                                de Excel y fórmulas avanzadas. Trayectoria versátil y adaptable en el ámbito laboral.
+                                                        </div>
+                                                        <div className="contenedor-con-padding ">
+                                                                        YouTube: &nbsp;
+                                                                        <a href="" className="t-d-none">
+                                                                                <i className="fa-brands fa-youtube c-red"></i> Jeff Aporta.
+                                                                        </a>
+                                                                        <br/>
+                                                                        Whatsapp: &nbsp;
+                                                                        <a href="https://api.whatsapp.com/send?phone=573107257814&text=Hola%20Jeff" className="t-d-none">
+                                                                                <i className="fa-brands fa-whatsapp c-lime"></i> +57 310 725 7814.
+                                                                        </a>
+                                                                        <br/>
+                                                                        Telegram: &nbsp;
+                                                                        <a href="https://t.me/jeffAporta" className="t-d-none">
+                                                                                <i className="fa-brands fa-telegram c-dodgerblue"></i> @jeffAporta.
+                                                                        </a>
+                                                                        <br/>
+                                                                        Correo: &nbsp;
+                                                                        <a href="mailto:jeffaporta@gmail.com" className="t-d-none">
+                                                                                <i className="fa-regular fa-envelope"></i> jeffaporta@gmail.com
+                                                                        </a>
+                                                        </div>
+                                                </ThemeProvider>
+                                        )
+                        }
+                }
+
+                function AcordeonesDeEmpresas(){
+                        return (
+                                <div >
+                                        <AcordeonEmpresa 
+                                                nombre="Edukathe" 
+                                                años="1" 
+                                                imgurl="https://i.ibb.co/v336HPd/image.png" 
+                                                contenido={
+                                                        <React.Fragment>
+                                                                Tiempo después de mi labor, cambiaron su nombre a <b>ELCINCO</b>.
+                                                        </React.Fragment>
+                                                }
+                                                web="https://www.elcinco.io/"
+                                        />
+                                        <AcordeonEmpresa 
+                                                nombre="ISeeCI" 
+                                                años="1" 
+                                                imgurl="https://i.ibb.co/K9nw5Rk/logoisee.png" 
+                                                contenido={
+                                                        <React.Fragment>
+                                                                Empresa dedicada a desarrollar productos potenciados por IA.
+                                                                Tiempo después de mi labor, cerraron la empresa.
+                                                        </React.Fragment>
+                                                }
+                                                web="https://iseeci.com/es/"
+                                                colorFondo="#3843D0"
+                                        />
+                                        <AcordeonEmpresa 
+                                                nombre="Registel" 
+                                                años="2" 
+                                                imgurl="https://i.ibb.co/CK1yV01/logoregistel.png" 
+                                                contenido={
+                                                        <React.Fragment>
+                                                                Empresa dedicada al registro de pasajeros en buses de diferentes empresas.
+                                                        </React.Fragment>
+                                                }
+                                                web="https://registel.co/"
+                                        />
+                                </div>
+                        );
+                }
+
+                function AcordeonEmpresa({nombre, años, imgurl, contenido, web, colorFondo="white"}){
+                        return (
+                                <Accordion>
+                                        <AccordionSummary expandIcon={<i class='fa-solid fa-chevron-down'></i>} >
+                                        <Typography><Chip label={`${años} ${años==1?"Año":"Años"}`} /> &nbsp; {nombre}</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                                <div className="d-flex">
+                                                        <img src={imgurl} alt="logo" className="logo-acordion" style={{
+                                                                backgroundColor: colorFondo
+                                                        }} />
+                                                        <Typography>
+                                                                {contenido}
+                                                                <br/>
+                                                                <br/>
+                                                                <b>Sitio web</b>
+                                                                <br/>
+                                                                <a href={web} target="_blank">{web}</a>
+                                                        </Typography>
+                                                </div>
+                                        </AccordionDetails>
+                                </Accordion>
+                        );
+                }
+
+                ReactDOM.render(<App />, document.querySelector('.App'));
+
+                updateResponsive();
+        </script>
+</body>
+
+</html>

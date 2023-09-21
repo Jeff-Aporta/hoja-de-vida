@@ -4,4 +4,17 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+a{
+    color: inherit;
+}
+
+.contenedor-con-padding{
+    padding: 40px;
+}
+
+.bg-enfasis1{
+    background-color: hsla(202, 100%, 50%, 0.10);
 }

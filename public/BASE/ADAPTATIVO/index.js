@@ -1,7 +1,3 @@
-addScript('/BASE/adaptativo/ifw.js')
-addScript('/BASE/adaptativo/lerpw.js')
-addScript('/BASE/adaptativo/switchw.js')
-
 const replaces = {
     A: "*", //asterisc
     S: "/", //slash

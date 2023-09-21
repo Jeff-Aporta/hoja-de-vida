@@ -28,7 +28,6 @@ const addLink = (href, rel = "stylesheet") => {
 //addScript({ src: "/BASE/HTML/index.js" });
 addScript({ src: "/BASE/PROTOTIPOS/index.js" })
 
-addScript({ src: "/BASE/ADAPTATIVO/index.js" });
 addScript({ src: "/BASE/CSS/index.js" });
 addScript({ src: "/BASE/EXTRA/index.js" });
 addScript({ src: "/BASE/FORMATOS/index.js" });
@@ -40,7 +39,6 @@ addLink("/abreviaturas.css");
 addLink("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 
 Iconos_fa_bs();
-adaptativo();
 SweetAlert2();
 
 function SweetAlert2() {

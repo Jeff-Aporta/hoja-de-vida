@@ -1,3 +1,31 @@
+.bg-white {
+        background-color: white;
+}
+
+.c-dodgerblue {
+        color: dodgerblue;
+}
+
+.c-skyblue {
+        color: skyblue;
+}
+
+.c-black {
+        color: black;
+}
+
+.c-red {
+        color: red;
+}
+
+.c-lime{
+        color: lime;
+}
+
+.t-d-none {
+        text-decoration: none;
+}
+
 .w-100P {
         width: 100%;
 }
@@ -22,6 +50,11 @@
         display: none;
 }
 
+.d-flex {
+        display: flex;
+}
+
+
 .v-hidden {
         visibility: hidden;
 }
@@ -44,6 +77,10 @@
 
 .ml-5px {
         margin-left: 5px;
+}
+
+.m-10px {
+        margin: 10px;
 }
 
 .pad-20px {
