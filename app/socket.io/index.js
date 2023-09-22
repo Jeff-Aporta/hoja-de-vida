@@ -1,27 +1,26 @@
+const puppeteer = require("puppeteer");
+
 module.exports = function (app_pack) {
     let { io, mongo } = app_pack;
 
     io.on('connection', function (socket) {
 
-        socket.on('Productos: Cargar todos', async function () {
-            let productos = await mongo.todosLosDatosAlmacenados("Productos");
-            io.to(socket.id).emit("Productos: Cargar todos", productos);
+        socket.on('Tomar pantallazo', async function (url, nombre) {
+            puppeteer
+                .launch({
+                    defaultViewport: {
+                        width: 640,
+                        height: 360,
+                    },
+                })
+                .then(async (browser) => {
+                    const page = await browser.newPage();
+                    await page.goto(url);
+                    await new Promise((resolve) => setTimeout(resolve, 5000));
+                    await page.screenshot({ path: nombre + ".png" });
+                    await browser.close();
+                });
         });
 
-        socket.on('Productos: Cargar uno', async function (id) {
-            let producto = await mongo.leer(id, "Productos");
-            io.to(socket.id).emit("Productos: Cargar uno", producto);
-        });
-
-        socket.on('Productos: Eliminar', async function (id) {
-            let producto = await mongo.eliminar(id, "Productos");
-            io.to(socket.id).emit("Productos: Eliminar", producto);
-        });
-
-        socket.on('Producto: obtener', async function (id) {
-            let producto = await mongo.leer(id, "Productos");
-            io.to(socket.id).emit("Producto: consultado", producto);
-        });
-        
     });
 }
