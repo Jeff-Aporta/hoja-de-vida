@@ -1,0 +1,67 @@
+*{
+    transition: all 0.25s;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(https://cdn.jsdelivr.net/gh/Jeff-Aporta/recursos@5e3f65ccc8059bea40436df5ce162da8abe213a0/lmroman.ttf);
+}
+
+#resumen {
+    font-family: myFirstFont;
+    font-size: 160%;
+    text-align: left;
+}
+
+table {
+    display: inline-block;
+    font-family: myFirstFont;
+    font-size: 130%;
+    border: 1px solid black;
+    vertical-align: top;
+}
+
+th,
+td {
+    padding: 2px;
+    border: 1px solid black;
+}
+
+td {
+    background-color: white;
+    font-size: 80%;
+}
+
+th {
+    background: rgb(0, 139, 105);
+    color: white;
+}
+
+body {
+    text-align: center;
+}
+
+canvas {
+    border: 2px solid rgb(0, 139, 105);
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+input {
+    text-align: center;
+}
