@@ -15,18 +15,18 @@
       background-repeat: no-repeat;
     }
 
-        .wave2 {
-          background: url('/SVG/wave2.svg');
-          background-size: cover;
-          background-repeat: no-repeat;
-        }
+    .wave2 {
+      background: url('/SVG/wave2.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
     .video-de-youtube {
       display: inline-block;
       width: 200px;
       margin: 10px;
 
-      .titulo{
+      .titulo {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -62,7 +62,7 @@
 
           &:hover {
             display: flex;
-                opacity: 1;
+            opacity: 1;
           }
         }
       }
@@ -87,15 +87,59 @@
                                                                         Proyectos
                                                                 </h1>
                                                                 <li>
-                                                                        <a href="#">
                                                                                 Algoritmos
-                                                                        </a>
                                                                         <ul>
-                                                                                <li>
-                                                                                        <a href="/algoritmos/ordenamiento">
-                                                                                                Ordenamiento
-                                                                                        </a>
-                                                                                </li>
+                                                                                <ItemProyecto titulo="Force many body" url="/javascript/algoritmos/force-many-body"/>
+                                                                                <ItemProyecto titulo="Juego de la vida de Conway" url="/javascript/algoritmos/juego-de-la-vida-conway"/>
+                                                                                <ItemProyecto titulo="Liquido Simulación (Con ley de Hooke)" url="/javascript/algoritmos/liquido-ley-de-hooke"/>
+                                                                                <ItemProyecto titulo="Método Simplex" url="/javascript/algoritmos/metodo-simplex"/>
+                                                                                <ItemProyecto titulo="Regresión Lineal" url="/javascript/algoritmos/regresion-lineal"/>
+                                                                                <ItemProyecto titulo="t-SNE" url="/javascript/algoritmos/t-SNE"/>
+                                                                        </ul>
+                                                                </li>
+                                                                <li>
+                                                                        Aplicativos
+                                                                        <ul>
+                                                                                <ItemProyecto titulo="Cadenas de markov" url="/javascript/aplicativos/cadenas-de-markov"/>
+                                                                                <ItemProyecto titulo="Calculadora" url="/javascript/aplicativos/calculadora"/>
+                                                                                <ItemProyecto titulo="Distribución de Poisson" url="/javascript/aplicativos/distribucion-de-poisson"/>
+                                                                                <ItemProyecto titulo="Grafos" url="/javascript/aplicativos/grafos"/>
+                                                                                <ItemProyecto titulo="MIDI" url="/javascript/aplicativos/MIDI"/>
+                                                                                <ItemProyecto titulo="Simulador de dados" url="/javascript/aplicativos/simulador-de-dados"/>
+                                                                                <ItemProyecto titulo="Temporizador tipo moneda" url="/javascript/aplicativos/temporizador-tipo-moneda"/>
+                                                                        </ul>
+                                                                </li>
+                                                                <li>
+                                                                        Estructura de datos
+                                                                        <ul>
+                                                                                <ItemProyecto titulo="Arboles binarios (Recorridos)" url="/javascript/estructura-de-datos/arboles-binarios-recorridos"/>
+                                                                                <ItemProyecto titulo="Arboles binarios (Torres de Hanoi)" url="/javascript/estructura-de-datos/arboles-binarios-torres-de-hanoi"/>
+                                                                        </ul>
+                                                                </li>
+                                                                <li>
+                                                                        Juegos
+                                                                        <ul>
+                                                                                <ItemProyecto titulo="Buscaminas" url="/javascript/juegos/buscaminas"/>
+                                                                                <ItemProyecto titulo="Flappy bird" url="/javascript/juegos/flappy-bird"/>
+                                                                                <ItemProyecto titulo="Juego de preguntas" url="/javascript/juegos/juego-de-preguntas"/>
+                                                                                <ItemProyecto titulo="Juego de preguntas v2" url="/javascript/juegos/juego-de-preguntas-v2"/>
+                                                                                <ItemProyecto titulo="Juego de selección de conceptos" url="/javascript/juegos/juego-de-seleccion-de-conceptos"/>
+                                                                                <ItemProyecto titulo="Salocin" url="/javascript/juegos/juego-salocin"/>
+                                                                                <ItemProyecto titulo="Memorama" url="/javascript/juegos/memorama"/>
+                                                                                <ItemProyecto titulo="Pong solitario" url="/javascript/juegos/pong-solitario"/>
+                                                                                <ItemProyecto titulo="Tetris" url="/javascript/juegos/tetris"/>
+                                                                        </ul>
+                                                                </li>
+                                                                <li>
+                                                                        p5.js
+                                                                        <ul>
+                                                                                <ItemProyecto titulo="Animación de peces" url="/javascript/p5.js/animacion-de-peces"/>
+                                                                                <ItemProyecto titulo="Árbol recursivo" url="/javascript/p5.js/arbol-recursivo"/>
+                                                                                <ItemProyecto titulo="Ayuno intermitente" url="/javascript/p5.js/ayuno-intermitente"/>
+                                                                                <ItemProyecto titulo="Juego de naves" url="/javascript/p5.js/computacion-grafica/23-juego-de-naves.html"/>
+                                                                                <ItemProyecto titulo="Reloj" url="/javascript/p5.js/computacion-grafica/12-reloj.html"/>
+                                                                                <ItemProyecto titulo="Espiral de Ulam" url="/javascript/p5.js/espiral-de-ulam"/>
+                                                                                <ItemProyecto titulo="Estanque de peces" url="/javascript/p5.js/estanque-de-peces"/>
                                                                         </ul>
                                                                 </li>
                                                         </ul>
@@ -109,6 +153,38 @@
                                                 </div>
                                 </ThemeProvider>
                         );
+
+                        function ItemProyecto({titulo, url}) {
+                                return (
+                                        <li>
+                                                <Proyecto titulo={titulo} url={url}/>
+                                        </li>
+                                )
+                        }
+
+                        function Proyecto({titulo, url}) {
+                                return (
+                                        <React.Fragment>
+                                                <Button onClick={() => ventana_flotante["nueva-ventana"]({
+                                                        titulo_texto: titulo,
+                                                        html: `
+                                                                <iframe 
+                                                                        width="100%" 
+                                                                        height="100%" 
+                                                                        src="${url}" 
+                                                                        frameborder="0" 
+                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                                                        allowfullscreen
+                                                                ></iframe>`
+                                                })}>
+                                                        {titulo}
+                                                </Button>
+                                                <Button href={url} target="_blank">
+                                                        <i class="fa-solid fa-square-arrow-up-right"></i>
+                                                </Button>
+                                        </React.Fragment>
+                                )
+                        }
                 }
         }
 
