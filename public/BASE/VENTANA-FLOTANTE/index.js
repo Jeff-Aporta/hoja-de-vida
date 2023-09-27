@@ -1,4 +1,4 @@
-addLink("/RDW1/resources/js/00/BASE/VENTANA-FLOTANTE/index.css");
+addLink("/BASE/VENTANA-FLOTANTE/index.css");
 
 let VENTANA_FLOTANTE_AGRUPAMIENTO;
 

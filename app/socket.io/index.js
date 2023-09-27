@@ -1,5 +1,7 @@
 const puppeteer = require("puppeteer");
 
+let videos = require('./Youtube');
+
 module.exports = function (app_pack) {
     let { io, mongo } = app_pack;
 
@@ -22,5 +24,8 @@ module.exports = function (app_pack) {
                 });
         });
 
+        socket.on('Obtener todos los videos', async function () {
+            socket.emit('Todos los videos', videos);
+        });
     });
 }

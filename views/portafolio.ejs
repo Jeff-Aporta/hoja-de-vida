@@ -8,24 +8,159 @@
 
 <body>
   <style>
+    .wave1 {
+      background: url('/SVG/wave1.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+        .wave2 {
+          background: url('/SVG/wave2.svg');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+    .video-de-youtube {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+
+      .titulo{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+      }
+
+      .contenedor-de-imagen-de-video-de-youtube {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+
+        & img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          top: 0;
+          left: 0;
+        }
+
+        & .hover {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.5);
+          opacity: 0;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-size: 50px;
+
+          &:hover {
+            display: flex;
+                opacity: 1;
+          }
+        }
+      }
+
+    }
   </style>
 
   <div class="App">
   </div>
 
   <script type="text/babel">
-        class App extends React.Component {
+
+    class App extends React.Component {
                 render() {
                         return (
                                 <ThemeProvider theme={darkTheme}>
                                         <CssBaseline />
                                         <HeaderMenu />
+                                                <div className="contenedor-con-padding wave2">
+                                                        <ul>
+                                                                <h1>
+                                                                        Proyectos
+                                                                </h1>
+                                                                <li>
+                                                                        <a href="#">
+                                                                                Algoritmos
+                                                                        </a>
+                                                                        <ul>
+                                                                                <li>
+                                                                                        <a href="/algoritmos/ordenamiento">
+                                                                                                Ordenamiento
+                                                                                        </a>
+                                                                                </li>
+                                                                        </ul>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                                <div className="contenedor-con-padding wave1">
+                                                        <h1>
+                                                                Videos de Youtube
+                                                        </h1>
+                                                        <div className="contenedor-de-videos-de-youtube d-flex-space-between">
+                                                        </div>
+                                                </div>
                                 </ThemeProvider>
                         );
                 }
         }
 
         ReactDOM.render(<App />, document.querySelector('.App'));
+
+        socket.emit("Obtener todos los videos");
+
+        socket.on("Todos los videos", function(videos){
+                var contenedor = document.querySelector(".contenedor-de-videos-de-youtube");
+                let lst = []
+                videos.sort(function(a, b){
+                        if (a.datePublished < b.datePublished) {
+                                return 1;
+                        }
+                        if (a.datePublished > b.datePublished) {
+                                return -1;
+                        }
+                        return 0;
+                });
+                console.log(videos);
+                videos.forEach(function(video){
+                        lst.push(<VideoDeYoutube video={video}/>);
+                        function VideoDeYoutube(props){
+                                return (
+                                        <div className="video-de-youtube">
+                                                <div className="contenedor-de-imagen-de-video-de-youtube" onClick={() => ventana_flotante["nueva-ventana"]({
+                                                                titulo_texto: props.video.title,
+                                                                html: `
+                                                                <iframe 
+                                                                        width="100%" 
+                                                                        height="100%" 
+                                                                        src="https://www.youtube.com/embed/${props.video.videoId}" 
+                                                                        frameborder="0" 
+                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                                                        allowfullscreen
+                                                                ></iframe>`
+                                                        })}>
+                                                        <img src={props.video.thumbnailUrl} loading="lazy"/>
+                                                        <div className="hover">
+                                                                <i className="fas fa-play"></i>
+                                                        </div>
+                                                </div>
+                                                <div className="titulo" title={props.video.title}>
+                                                        {props.video.title}
+                                                </div>
+                                                {props.video.datePublished}
+                                        </div>
+                                );
+                        }
+                });
+
+                ReactDOM.render(lst, contenedor);
+        });
 
         updateResponsive();
   </script>
